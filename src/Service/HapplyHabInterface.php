@@ -6,7 +6,13 @@ namespace Aih\AihBundle\Service;
 
 interface HapplyHabInterface
 {
+    /**
+     * Retourne la liste des habilitations d'un utilisateur.
+     */
     public function getRoles(string $email): array;
 
+    /**
+     * Retourne un Token JWT.
+     */
     public function getToken(string $username, string $password): ?string;
 }
