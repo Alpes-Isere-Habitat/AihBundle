@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aih\AihBundle\Ressources\config;
 
 use Aih\AihBundle\Service\HapplyApi;

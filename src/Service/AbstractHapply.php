@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aih\AihBundle\Service;
 
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;

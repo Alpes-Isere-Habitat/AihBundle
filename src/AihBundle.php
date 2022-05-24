@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aih\AihBundle;
 
 use Aih\AihBundle\DependencyInjection\AihExtension;
@@ -7,7 +9,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 class AihBundle extends Bundle
 {
-    public function getContainerExtension() : ?AihExtension
+    public function getContainerExtension(): ?AihExtension
     {
         if (null === $this->extension) {
             $this->extension = new AihExtension();
