@@ -1,5 +1,7 @@
 # "AihBundle" Symfony pour Alpes Isère Habitat
 
+[![Static code analysis](https://github.com/Alpes-Isere-Habitat/AihBundle/actions/workflows/code_analysis.yml/badge.svg)](https://github.com/Alpes-Isere-Habitat/AihBundle/actions/workflows/code_analysis.yml)
+
 **Ce bundle est à destination des développeurs d'Alpes Isère Habitat**, il ne présente aucuns intérêts pour d'autres applications que celles d'Alpes Isère Habitat.
 
 ## 🏁 Installation
