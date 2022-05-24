@@ -2,6 +2,7 @@
     "name": "aih/aih-bundle",
     "description": "Symfony Bundle for AIH",
     "type": "symfony-bundle",
+    "license": "MIT",
     "authors": [
         {
             "name": "Yoan Bernabeu",
