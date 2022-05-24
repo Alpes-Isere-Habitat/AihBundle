@@ -1,9 +1,9 @@
 aih:
 
   # Informations de connexion à HapplyApi
-  HAPPLYAPI_USER:
-  HAPPLYAPI_PASSWORD:
-  HAPPLYAPI_URL:
+  HAPPLYAPI_USER: '%env(resolve:HAPPLYAPI_USER)%'
+  HAPPLYAPI_PASSWORD: '%env(resolve:HAPPLYAPI_PASSWORD)%'
+  HAPPLYAPI_URL: '%env(resolve:HAPPLYAPI_URL)%'
 
   # Informations de connexion à HapplyHab
-  HAPPLYHAB_APPLICATION:
+  HAPPLYHAB_APPLICATION: '%env(resolve:HAPPLYHAB_APPLICATION)%'

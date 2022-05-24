@@ -4,39 +4,11 @@
 
 ## 🏁 Installation
 
-Assurez-vous que Composer est installé globalement sur votre machine.
-
-[Chapitre sur l'installation](https://getcomposer.org/doc/00-intro.md) de la documentation de Composer.
-
-### Applications avec Symfony Flex
-
-Ouvrez le terminal et tapez la commande suivante:
+Dans votre terminal, taper les commandes suivantes :
 
 ```console
-$ composer require aih/aih-bundle
-```
-
-### Applications sans Symfony Flex
-
-#### Step 1: Télécharger le bundle
-
-Ouvrez le terminal et tapez la commande suivante:
-
-```console
-$ composer require aih/aih-bundle
-```
-
-#### Step 2: Ajouter le bundle à l'application
-
-Ajouter le bundle à votre application Symfony en éditant le fichier `config/bundles.php` de votre application.
-
-```php
-// config/bundles.php
-
-return [
-    // ...
-    Aih\AihBundle\AihBundle::class => ['all' => true],
-];
+wget https://raw.githubusercontent.com/Alpes-Isere-Habitat/AihBundle/main/docs/aih.yaml -P ./config/packages
+composer require aih/aih-bundle
 ```
 
 ## 🤝 Contribuer au projet
