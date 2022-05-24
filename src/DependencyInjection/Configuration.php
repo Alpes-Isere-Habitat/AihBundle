@@ -56,6 +56,24 @@ class Configuration implements ConfigurationInterface
                         'Vous devez spécifier l\'URL de l\'API de HapplyHab.'
                     )
                 ->end()
+                ->scalarNode('HAPPLYSMS_URL')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier l\'URL de l\'API de HapplySms.'
+                    )
+                ->end()
+                ->scalarNode('HAPPLYSMS_USER')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un compte pour HapplySms.'
+                    )
+                ->end()
+                ->scalarNode('HAPPLYSMS_PASSWORD')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un mot de passe pour HapplySms.'
+                    )
+                ->end()
             ->end()
         ;
 

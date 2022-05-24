@@ -1,5 +1,4 @@
 aih:
-
   # Informations de connexion à HapplyApi
   HAPPLYAPI_USER: '%env(HAPPLYAPI_USER)%'
   HAPPLYAPI_PASSWORD: '%env(HAPPLYAPI_PASSWORD)%'
@@ -10,3 +9,8 @@ aih:
   HAPPLYHAB_USER: '%env(HAPPLYHAB_USER)%'
   HAPPLYHAB_PASSWORD: '%env(HAPPLYHAB_PASSWORD)%'
   HAPPLYHAB_URL: '%env(HAPPLYHAB_URL)%'
+
+  # Informations de connexion à HapplySms
+  HAPPLYSMS_USER: '%env(HAPPLYSMS_USER)%'
+  HAPPLYSMS_PASSWORD: '%env(HAPPLYSMS_PASSWORD)%'
+  HAPPLYSMS_URL: '%env(HAPPLYSMS_URL)%'
