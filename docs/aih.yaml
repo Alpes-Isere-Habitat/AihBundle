@@ -1,0 +1,9 @@
+aih:
+
+  # Informations de connexion à HapplyApi
+  HAPPLYAPI_USER:
+  HAPPLYAPI_PASSWORD:
+  HAPPLYAPI_URL:
+
+  # Informations de connexion à HapplyHab
+  HAPPLYHAB_APPLICATION:
