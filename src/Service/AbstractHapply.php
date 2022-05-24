@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Aih\AihBundle\Service;
 
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
+use Symfony\Contracts\HttpClient\HttpClientInterface;
 
 class AbstractHapply
 {
-    public ContainerBagInterface $params;
-
-    public function __construct(ContainerBagInterface $params)
-    {
-        $this->params = $params;
+    public function __construct(
+        public ContainerBagInterface $params,
+        public HttpClientInterface $client,
+    ) {
     }
 }
