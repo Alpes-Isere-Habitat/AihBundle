@@ -2,9 +2,9 @@
 
 **Ce bundle est à destination des développeurs d'Alpes Isère Habitat**, il ne présente aucuns intérêts pour d'autres applications que celles d'Alpes Isère Habitat.
 
-## Installation
+## 🏁 Installation
 
-Assurez-vous que Compoer est installé globalement sur votre machine.
+Assurez-vous que Composer est installé globalement sur votre machine.
 
 [Chapitre sur l'installation](https://getcomposer.org/doc/00-intro.md) de la documentation de Composer.
 
