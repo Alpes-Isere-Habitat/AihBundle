@@ -2,8 +2,10 @@
 
 namespace Aih\AihBundle\Ressources\config;
 
-use Aih\AihBundle\Aih;
-use Aih\AihBundle\AihInterface;
+use Aih\AihBundle\Service\HapplyApi;
+use Aih\AihBundle\Service\HapplyApiInterface;
+use Aih\AihBundle\Service\HapplyHab;
+use Aih\AihBundle\Service\HapplyHabInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $container): void {
@@ -11,7 +13,9 @@ return static function (ContainerConfigurator $container): void {
         ->public()
         ->autoconfigure()
         ->autowire()
-            ->set('aih', Aih::class)
-            ->alias(AihInterface::class, 'aih')
+            ->set('happlyapi', HapplyApi::class)
+            ->alias(HapplyApiInterface::class, 'happlyapi')
+            ->set('happlyhab', HapplyHab::class)
+            ->alias(HapplyHabInterface::class, 'happlyhab')
     ;
 };

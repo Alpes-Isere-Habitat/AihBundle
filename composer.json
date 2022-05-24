@@ -21,5 +21,20 @@
         "psr-4": {
             "Aih\\AihBundle\\": "src/"
         }
+    },
+    "require-dev": {
+        "ext-json": "*",
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpstan/phpstan": "^0.12",
+        "phpstan/phpstan-beberlei-assert": "^0.12",
+        "phpstan/phpstan-deprecation-rules": "^0.12",
+        "phpstan/phpstan-phpunit": "^0.12",
+        "phpstan/phpstan-strict-rules": "^0.12",
+        "symfony/framework-bundle": "^5.0|^6.0",
+        "symfony/phpunit-bridge": "^5.0|^6.0"
+    },
+    "scripts": {
+        "test:phpstan": "./vendor/bin/phpstan analyse ./src",
+        "test:cs": "./vendor/bin/php-cs-fixer fix --dry-run --using-cache=no"
     }
 }

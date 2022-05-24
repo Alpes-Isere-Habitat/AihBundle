@@ -1,8 +1,8 @@
 <?php
 
-namespace Aih\AihBundle;
+namespace Aih\AihBundle\Service;
 
-class Aih implements AihInterface
+class HapplyApi extends AbstractHapply implements HapplyApiInterface
 {
     public function getTest(): string
     {
