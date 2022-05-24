@@ -7,3 +7,6 @@ aih:
 
   # Informations de connexion à HapplyHab
   HAPPLYHAB_APPLICATION: '%env(resolve:HAPPLYHAB_APPLICATION)%'
+  HAPPLYHAB_USER: '%env(resolve:HAPPLYHAB_USER)%'
+  HAPPLYHAB_PASSWORD: '%env(resolve:HAPPLYHAB_PASSWORD)%'
+  HAPPLYHAB_URL: '%env(resolve:HAPPLYHAB_URL)%'

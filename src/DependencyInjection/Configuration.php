@@ -37,6 +37,25 @@ class Configuration implements ConfigurationInterface
                     ->info(
                         'Vous devez spécifier l\'application pour laquelle vous souhaitez utiliser HapplyHab.'
                     )
+                ->end()
+                ->scalarNode('HAPPLYHAB_USER')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un compte pour HapplyHab.'
+                    )
+                ->end()
+                ->scalarNode('HAPPLYHAB_PASSWORD')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un mot de passe pour HapplyHab.'
+                    )
+                ->end()
+                ->scalarNode('HAPPLYHAB_URL')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier l\'URL de l\'API de HapplyHab.'
+                    )
+                ->end()
             ->end()
         ;
 
