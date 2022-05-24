@@ -7,7 +7,10 @@
 Dans votre terminal, taper les commandes suivantes :
 
 ```console
+curl https://raw.githubusercontent.com/Alpes-Isere-Habitat/AihBundle/main/docs/.env >> .env
+
 wget https://raw.githubusercontent.com/Alpes-Isere-Habitat/AihBundle/main/docs/aih.yaml -P ./config/packages
+
 composer require aih/aih-bundle
 ```
 
