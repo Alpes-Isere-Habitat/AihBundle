@@ -6,6 +6,8 @@ namespace Aih\AihBundle\Service;
 
 use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
+use Symfony\Contracts\Cache\CacheInterface;
+use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
@@ -14,7 +16,17 @@ abstract class AbstractHapply implements AbstractHapplyInterface
     public function __construct(
         public ContainerBagInterface $params,
         public HttpClientInterface $client,
+        private CacheInterface $cache
     ) {
+    }
+
+    public function getTokenFromCache(string $username, string $password, string $url): ?string
+    {
+        return $this->cache->get('token for '.$url, function (ItemInterface $item) use ($username, $password, $url): string {
+            $item->expiresAfter(3600);
+
+            return $this->getToken($username, $password, $url);
+        });
     }
 
     public function getToken(string $username, string $password, string $url): ?string

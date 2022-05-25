@@ -10,7 +10,7 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
 {
     public function getRoles(string $email): array
     {
-        $token = $this->getToken(
+        $token = $this->getTokenFromCache(
             $this->params->get('aih_aih.happlyhab.user'),
             $this->params->get('aih_aih.happlyhab.password'),
             $this->params->get('aih_aih.happlyhab.url')

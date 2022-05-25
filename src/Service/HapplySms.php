@@ -10,7 +10,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
 {
     public function sendSms(array $dest, string $message): array
     {
-        $token = $this->getToken(
+        $token = $this->getTokenFromCache(
             $this->params->get('aih_aih.happlysms.user'),
             $this->params->get('aih_aih.happlysms.password'),
             $this->params->get('aih_aih.happlysms.url')
