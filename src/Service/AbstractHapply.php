@@ -6,6 +6,7 @@ namespace Aih\AihBundle\Service;
 
 use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
+use Symfony\Component\HttpClient\HttpOptions;
 use Symfony\Contracts\Cache\CacheInterface;
 use Symfony\Contracts\Cache\ItemInterface;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
@@ -55,30 +56,30 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         return $data;
     }
 
-    public function makeOptionsWithToken(string $token): array
+    public function makeOptionsWithToken(string $token): HttpOptions
     {
-        $options = [];
+        $options = new HttpOptions();
 
-        $options['headers'] = [
+        $options->setHeaders([
             'Content-Type' => 'application/json',
             'User-Agent' => 'HapplyBundle client',
             'Authorization' => 'Bearer '.$token,
-        ];
+        ]);
 
         return $options;
     }
 
-    public function addJsonToOptions(array $options, array $json): array
+    public function addJsonToOptions(HttpOptions $options, array $json): HttpOptions
     {
-        $options['json'] = $json;
+        $options->setJson($json);
 
         return $options;
     }
 
-    public function makeRequest(string $method, string $url, array $options = []): ResponseInterface
+    public function makeRequest(string $method, string $url, HttpOptions $options): ResponseInterface
     {
         try {
-            $response = $this->client->request($method, $url, $options);
+            $response = $this->client->request($method, $url, $options->toArray());
         } catch (Exception $e) {
             throw new Exception($e->getMessage(), 1);
         }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Service;
 
+use Symfony\Component\HttpClient\HttpOptions;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 
 interface AbstractHapplyInterface
@@ -12,9 +13,9 @@ interface AbstractHapplyInterface
 
     public function getTokenFromCache(string $username, string $password, string $url): ?string;
 
-    public function makeRequest(string $method, string $url, array $options = []): ResponseInterface;
+    public function makeRequest(string $method, string $url, HttpOptions $options): ResponseInterface;
 
-    public function makeOptionsWithToken(string $token): array;
+    public function makeOptionsWithToken(string $token): HttpOptions;
 
-    public function addJsonToOptions(array $options, array $json): array;
+    public function addJsonToOptions(HttpOptions $options, array $json): HttpOptions;
 }
