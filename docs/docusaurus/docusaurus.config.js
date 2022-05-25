@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'AIH Bundle',
   tagline: 'Guide d\'utilisation du Bundle',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://aih-bundle.netlify.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
