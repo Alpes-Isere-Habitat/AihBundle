@@ -10,17 +10,15 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
 {
     public function getRoles(string $email): array
     {
-        $token = $this->getToken($this->params->get('aih_aih.happlyhab.user'), $this->params->get('aih_aih.happlyhab.password'));
+        $token = $this->getToken(
+            $this->params->get('aih_aih.happlyhab.user'),
+            $this->params->get('aih_aih.happlyhab.password'),
+            $this->params->get('aih_aih.happlyhab.url')
+        );
 
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'User-Agent' => 'HapplyHab client',
-                'Authorization' => 'Bearer '.$token,
-            ],
-        ];
+        $options = $this->makeOptionsWithToken($token);
 
-        $response = $this->client->request(
+        $response = $this->makeRequest(
             'GET',
             $this->params->get('aih_aih.happlyhab.url').'/roles/'.$email.'/'.$this->params->get('aih_aih.happlyhab.application'),
             $options
@@ -29,36 +27,7 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
         try {
             $data = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR);
         } catch (Exception $e) {
-            return ['error' => $e->getMessage()];
-        }
-
-        return $data;
-    }
-
-    public function getToken(string $username, string $password): ?string
-    {
-        $options = [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'Accept: */*',
-                'User-Agent' => 'HapplyHab login_check',
-            ],
-            'body' => json_encode([
-                'username' => $username,
-                'password' => $password,
-            ], JSON_THROW_ON_ERROR),
-        ];
-
-        $data = null;
-
-        try {
-            $response = $this->client->request(
-                'POST',
-                $this->params->get('aih_aih.happlyhab.url').'/api/login_check',
-                $options
-            );
-            $data = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['token'];
-        } catch (Exception) {
+            throw new Exception($e->getMessage(), 1);
         }
 
         return $data;

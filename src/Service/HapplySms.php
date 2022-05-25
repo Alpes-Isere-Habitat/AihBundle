@@ -10,14 +10,24 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
 {
     public function sendSms(array $dest, string $message): array
     {
-        $user = $this->params->get('aih_aih.happlysms.user');
-        $password = $this->params->get('aih_aih.happlysms.password');
-        $response = $this->client->request('POST', $this->params->get('aih_aih.happlysms.url').'/sms/simple', [
-            'json' => [
-                'dest' => $dest,
-                'message' => $message,
-            ],
+        $token = $this->getToken(
+            $this->params->get('aih_aih.happlysms.user'),
+            $this->params->get('aih_aih.happlysms.password'),
+            $this->params->get('aih_aih.happlysms.url')
+        );
+
+        $options = $this->makeOptionsWithToken($token);
+
+        $options = $this->addJsonToOptions($options, [
+            'dest' => $dest,
+            'message' => $message,
         ]);
+
+        $response = $this->makeRequest(
+            'POST',
+            $this->params->get('aih_aih.happlysms.url').'/sms/simple',
+            $options
+        );
 
         if (200 !== $response->getStatusCode()) {
             throw new Exception('Erreur lors de l\'utilisation de HapplySms');
