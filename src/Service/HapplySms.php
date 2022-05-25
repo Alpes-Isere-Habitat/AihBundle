@@ -35,4 +35,27 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
 
         return $response->toArray();
     }
+
+    public function getCommunication(int $id): array
+    {
+        $token = $this->getTokenFromCache(
+            $this->params->get('aih_aih.happlysms.user'),
+            $this->params->get('aih_aih.happlysms.password'),
+            $this->params->get('aih_aih.happlysms.url')
+        );
+
+        $options = $this->makeOptionsWithToken($token);
+
+        $response = $this->makeRequest(
+            'GET',
+            $this->params->get('aih_aih.happlysms.url').'/communication/'.$id,
+            $options
+        );
+
+        if (200 !== $response->getStatusCode()) {
+            throw new Exception('Erreur lors de l\'utilisation de HapplySms');
+        }
+
+        return $response->toArray();
+    }
 }
