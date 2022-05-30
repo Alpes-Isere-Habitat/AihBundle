@@ -74,6 +74,30 @@ class Configuration implements ConfigurationInterface
                         'Vous devez spécifier un mot de passe pour HapplySms.'
                     )
                 ->end()
+                ->scalarNode('AZURE_TENANT_ID')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier l\'ID de l\'organisation Azure.'
+                    )
+                ->end()
+                ->scalarNode('AZURE_CLIENT_ID')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier l\'ID du client Azure.'
+                    )
+                ->end()
+                ->scalarNode('AZURE_CLIENT_SECRET')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier le secret du client Azure.'
+                    )
+                ->end()
+                ->scalarNode('AZURE_GROUP_ALL_USER')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier le nom du groupe d\'utilisateurs Azure.'
+                    )
+                ->end()
             ->end()
         ;
 

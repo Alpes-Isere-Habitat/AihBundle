@@ -31,6 +31,11 @@ class AihExtension extends Extension
         $container->setParameter('aih_aih.happlysms.url', $config['HAPPLYSMS_URL']);
         $container->setParameter('aih_aih.happlysms.user', $config['HAPPLYSMS_USER']);
         $container->setParameter('aih_aih.happlysms.password', $config['HAPPLYSMS_PASSWORD']);
+
+        $container->setParameter('aih_aih.azure.tenantid', $config['AZURE_TENANT_ID']);
+        $container->setParameter('aih_aih.azure.clientid', $config['AZURE_CLIENT_ID']);
+        $container->setParameter('aih_aih.azure.clientsecret', $config['AZURE_CLIENT_SECRET']);
+        $container->setParameter('aih_aih.azure.alluser', $config['AZURE_GROUP_ALL_USER']);
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container): Configuration
