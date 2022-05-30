@@ -10,6 +10,8 @@ use Aih\AihBundle\Service\HapplyHab;
 use Aih\AihBundle\Service\HapplyHabInterface;
 use Aih\AihBundle\Service\HapplySms;
 use Aih\AihBundle\Service\HapplySmsInterface;
+use Aih\AihBundle\Service\MicrosoftGraph;
+use Aih\AihBundle\Service\MicrosoftGraphInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
 
 return static function (ContainerConfigurator $container): void {
@@ -23,5 +25,7 @@ return static function (ContainerConfigurator $container): void {
             ->alias(HapplyHabInterface::class, 'happlyhab')
             ->set('happlysms', HapplySms::class)
             ->alias(HapplySmsInterface::class, 'happlysms')
+            ->set('microsoftgraph', MicrosoftGraph::class)
+            ->alias(MicrosoftGraphInterface::class, 'microsoftgraph')
     ;
 };
