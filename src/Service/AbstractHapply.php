@@ -23,11 +23,18 @@ abstract class AbstractHapply implements AbstractHapplyInterface
 
     public function getTokenFromCache(string $username, string $password, string $url): ?string
     {
-        return $this->cache->get('token for '.$url, function (ItemInterface $item) use ($username, $password, $url): string {
+        $cleanUrl = $this->cleanInput($url);
+
+        return $this->cache->get('token for '.$cleanUrl, function (ItemInterface $item) use ($username, $password, $url): string {
             $item->expiresAfter(3600);
 
             return $this->getToken($username, $password, $url);
         });
+    }
+
+    public function cleanInput(string $input): string
+    {
+        return preg_replace('/[{}()\/\@:"]/', '', $input);
     }
 
     public function getToken(string $username, string $password, string $url): ?string
