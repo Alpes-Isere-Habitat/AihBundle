@@ -13,6 +13,8 @@ interface AbstractHapplyInterface
 
     public function getTokenFromCache(string $username, string $password, string $url): ?string;
 
+    public function cleanInput(string $input): string;
+
     public function makeRequest(string $method, string $url, HttpOptions $options): ResponseInterface;
 
     public function makeOptionsWithToken(string $token): HttpOptions;
