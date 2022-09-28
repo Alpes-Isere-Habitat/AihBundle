@@ -16,7 +16,7 @@ interface MicrosoftGraphInterface
     /**
      * Retourne le service (au sens RH) d'un utilisateur (via son adresse mail).
      */
-    public function getUserDepartement(string $user): string;
+    public function getUserDepartement(string $user): ?string;
 
     /**
      * Retourne tous les groupes d'un utilisateur (via son adresse mail).

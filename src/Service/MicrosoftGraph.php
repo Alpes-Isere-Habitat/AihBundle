@@ -46,7 +46,7 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
         ;
     }
 
-    public function getUserDepartement(string $user): string
+    public function getUserDepartement(string $user): ?string
     {
         $graph = $this->getGraph();
 
