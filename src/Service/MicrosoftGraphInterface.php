@@ -37,4 +37,9 @@ interface MicrosoftGraphInterface
      * Retourne le manager d'un utilisateur (via son adresse mail).
      */
     public function getManager(string $user): User;
+
+    /**
+     * Retourne la ville d'un utilisateur (via son adresse mail).
+     */
+    public function getUserCity(string $user): ?string;
 }

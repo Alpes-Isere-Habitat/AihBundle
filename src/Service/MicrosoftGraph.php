@@ -67,6 +67,17 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
         ;
     }
 
+    public function getUserCity(string $user): ?string
+    {
+        $graph = $this->getGraph();
+
+        return $graph->createRequest('GET', '/users/'.$user.'?$select=city')
+                    ->setReturnType(User::class)
+                    ->execute()
+                    ->getCity()
+        ;
+    }
+
     private function getGraph(): Graph
     {
         $tenantId = $this->params->get('aih_aih.azure.tenantid');
