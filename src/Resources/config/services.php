@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace Aih\AihBundle\Ressources\config;
 
 use Aih\AihBundle\Service\HapplyApi;
+use Aih\AihBundle\Service\HapplyApiGd;
+use Aih\AihBundle\Service\HapplyApiGdInterface;
 use Aih\AihBundle\Service\HapplyApiInterface;
 use Aih\AihBundle\Service\HapplyHab;
 use Aih\AihBundle\Service\HapplyHabInterface;
@@ -21,6 +23,8 @@ return static function (ContainerConfigurator $container): void {
         ->autowire()
             ->set('happlyapi', HapplyApi::class)
             ->alias(HapplyApiInterface::class, 'happlyapi')
+            ->set('happlyapigd', HapplyApiGd::class)
+            ->alias(HapplyApiGdInterface::class, 'happlyapigd')
             ->set('happlyhab', HapplyHab::class)
             ->alias(HapplyHabInterface::class, 'happlyhab')
             ->set('happlysms', HapplySms::class)

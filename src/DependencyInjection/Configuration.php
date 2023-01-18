@@ -32,6 +32,24 @@ class Configuration implements ConfigurationInterface
                         'Vous devez spécifier l\'URL de l\'API de HapplyApi.'
                     )
                 ->end()
+                ->scalarNode('HAPPLYAPIGD_USER')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un compte pour HapplyApiGD.'
+                    )
+                ->end()
+                ->scalarNode('HAPPLYAPIGD_PASSWORD')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un mot de passe pour HapplyApiGD.'
+                    )
+                ->end()
+                ->scalarNode('HAPPLYAPIGD_URL')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier l\'URL de l\'API de HapplyApiGD.'
+                    )
+                ->end()
                 ->scalarNode('HAPPLYHAB_APPLICATION')
                     ->isRequired()
                     ->info(
