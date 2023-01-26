@@ -1,22 +1,27 @@
 aih:
-  # Informations de connexion à HapplyApi
-  HAPPLYAPI_USER: '%env(HAPPLYAPI_USER)%'
-  HAPPLYAPI_PASSWORD: '%env(HAPPLYAPI_PASSWORD)%'
-  HAPPLYAPI_URL: '%env(HAPPLYAPI_URL)%'
+    # Informations de connexion à HapplyApi
+    HAPPLYAPI_USER: '%env(HAPPLYAPI_USER)%'
+    HAPPLYAPI_PASSWORD: '%env(HAPPLYAPI_PASSWORD)%'
+    HAPPLYAPI_URL: '%env(HAPPLYAPI_URL)%'
 
-  # Informations de connexion à HapplyHab
-  HAPPLYHAB_APPLICATION: '%env(HAPPLYHAB_APPLICATION)%'
-  HAPPLYHAB_USER: '%env(HAPPLYHAB_USER)%'
-  HAPPLYHAB_PASSWORD: '%env(HAPPLYHAB_PASSWORD)%'
-  HAPPLYHAB_URL: '%env(HAPPLYHAB_URL)%'
+    # Informations de connexion à HapplyApiGd
+    HAPPLYAPIGD_USER: '%env(HAPPLYAPIGD_USER)%'
+    HAPPLYAPIGD_PASSWORD: '%env(HAPPLYAPIGD_PASSWORD)%'
+    HAPPLYAPIGD_URL: '%env(HAPPLYAPIGD_URL)%'
 
-  # Informations de connexion à HapplySms
-  HAPPLYSMS_USER: '%env(HAPPLYSMS_USER)%'
-  HAPPLYSMS_PASSWORD: '%env(HAPPLYSMS_PASSWORD)%'
-  HAPPLYSMS_URL: '%env(HAPPLYSMS_URL)%'
+    # Informations de connexion à HapplyHab
+    HAPPLYHAB_APPLICATION: '%env(HAPPLYHAB_APPLICATION)%'
+    HAPPLYHAB_USER: '%env(HAPPLYHAB_USER)%'
+    HAPPLYHAB_PASSWORD: '%env(HAPPLYHAB_PASSWORD)%'
+    HAPPLYHAB_URL: '%env(HAPPLYHAB_URL)%'
 
-  # Informations de connexion à Azure/MS Graph/Office 365
-  AZURE_CLIENT_ID: '%env(AZURE_CLIENT_ID)%'
-  AZURE_CLIENT_SECRET: '%env(AZURE_CLIENT_SECRET)%'
-  AZURE_TENANT_ID: '%env(AZURE_TENANT_ID)%'
-  AZURE_GROUP_ALL_USER: '%env(AZURE_GROUP_ALL_USER)%'
+    # Informations de connexion à HapplySms
+    HAPPLYSMS_USER: '%env(HAPPLYSMS_USER)%'
+    HAPPLYSMS_PASSWORD: '%env(HAPPLYSMS_PASSWORD)%'
+    HAPPLYSMS_URL: '%env(HAPPLYSMS_URL)%'
+
+    # Informations de connexion à Azure/MS Graph/Office 365
+    AZURE_CLIENT_ID: '%env(AZURE_CLIENT_ID)%'
+    AZURE_CLIENT_SECRET: '%env(AZURE_CLIENT_SECRET)%'
+    AZURE_TENANT_ID: '%env(AZURE_TENANT_ID)%'
+    AZURE_GROUP_ALL_USER: '%env(AZURE_GROUP_ALL_USER)%'
