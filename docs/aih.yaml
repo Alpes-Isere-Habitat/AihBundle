@@ -9,6 +9,11 @@ aih:
     HAPPLYAPIGD_PASSWORD: '%env(HAPPLYAPIGD_PASSWORD)%'
     HAPPLYAPIGD_URL: '%env(HAPPLYAPIGD_URL)%'
 
+    # Informations de connexion à l'API de CMT
+    CMTAPI_USER: '%env(CMTAPI_USER)%'
+    CMTAPI_PASSWORD: '%env(CMTAPI_PASSWORD)%'
+    CMTAPI_URL: '%env(CMTAPI_URL)%'
+
     # Informations de connexion à HapplyHab
     HAPPLYHAB_APPLICATION: '%env(HAPPLYHAB_APPLICATION)%'
     HAPPLYHAB_USER: '%env(HAPPLYHAB_USER)%'

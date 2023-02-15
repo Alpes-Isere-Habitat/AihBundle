@@ -32,6 +32,10 @@ class AihExtension extends Extension
         $container->setParameter('aih_aih.happlyapigd.password', $config['HAPPLYAPIGD_PASSWORD']);
         $container->setParameter('aih_aih.happlyapigd.user', $config['HAPPLYAPIGD_USER']);
 
+        $container->setParameter('aih_aih.cmtapi.url', $config['CMTAPI_URL']);
+        $container->setParameter('aih_aih.cmtapi.password', $config['CMTAPI_PASSWORD']);
+        $container->setParameter('aih_aih.cmtapi.user', $config['CMTAPI_USER']);
+
         $container->setParameter('aih_aih.happlysms.url', $config['HAPPLYSMS_URL']);
         $container->setParameter('aih_aih.happlysms.user', $config['HAPPLYSMS_USER']);
         $container->setParameter('aih_aih.happlysms.password', $config['HAPPLYSMS_PASSWORD']);

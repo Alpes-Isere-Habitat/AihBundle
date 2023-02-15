@@ -50,6 +50,24 @@ class Configuration implements ConfigurationInterface
                         'Vous devez spécifier l\'URL de l\'API de HapplyApiGD.'
                     )
                 ->end()
+                ->scalarNode('CMTAPI_USER')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un compte l\'API de CMT.'
+                    )
+                ->end()
+                ->scalarNode('CMTAPI_PASSWORD')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier un mot de passe l\'API de CMT.'
+                    )
+                ->end()
+                ->scalarNode('CMTAPI_URL')
+                    ->isRequired()
+                    ->info(
+                        'Vous devez spécifier l\'URL de l\'API de HapplyApi.'
+                    )
+                ->end()
                 ->scalarNode('HAPPLYHAB_APPLICATION')
                     ->isRequired()
                     ->info(
