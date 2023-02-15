@@ -7,6 +7,7 @@ namespace Aih\AihBundle\Trait;
 use Exception;
 
 use function get_class;
+use function gettype;
 
 trait GraphQlClientTrait
 {
@@ -21,6 +22,30 @@ trait GraphQlClientTrait
     public function getEntity(string $entity, string $id, string $param): array
     {
         $query = '{'.$entity.'(id:'.$id.') { '.$param.' } }';
+        $data = $this->execute($query);
+
+        return $data[$entity];
+    }
+
+    public function getEntityBy(string $entity, array $fields, string $params): array
+    {
+        $query = '{'.$entity.'(';
+        foreach ($fields as $field => $value) {
+            switch (gettype($value)) {
+                case 'string':
+                    $query .= $field.': "'.$value.'"';
+                    break;
+                case 'integer':
+                    $query .= $field.': '.$value;
+                    break;
+                default:
+                    throw new Exception(get_class($this).'::getEntityBy() : Type de champ non géré: '.gettype($value), 1);
+            }
+            if ($field !== array_key_last($fields)) {
+                $query .= ', ';
+            }
+        }
+        $query .= ') { '.$params.' } }';
         $data = $this->execute($query);
 
         return $data[$entity];
