@@ -6,6 +6,8 @@ namespace Aih\AihBundle\Trait;
 
 use Exception;
 
+use function get_class;
+
 trait GraphQlClientTrait
 {
     public function getEntities(string $entity, string $params): array
@@ -46,6 +48,16 @@ trait GraphQlClientTrait
 
         try {
             $response = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR);
+
+            if (!isset($response['data'])) {
+                if (isset($response['errors'])) {
+                    $messages = array_map(fn ($error) => $error['message'], $response['errors']);
+                } else {
+                    $messages = ['Erreur inconnue'];
+                }
+
+                throw new Exception(get_class($this).' : '.implode('; ', $messages), 1);
+            }
 
             return $response['data'];
         } catch (Exception $e) {
