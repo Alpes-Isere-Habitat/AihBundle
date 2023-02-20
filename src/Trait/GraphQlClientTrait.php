@@ -38,6 +38,12 @@ trait GraphQlClientTrait
                 case 'integer':
                     $query .= $field.': '.$value;
                     break;
+                case 'boolean':
+                    $query .= $field.': '.($value ? 'true' : 'false');
+                    break;
+                case 'array':
+                    $query .= $field.': '.json_encode($value, JSON_THROW_ON_ERROR, 512);
+                    break;
                 default:
                     throw new Exception(get_class($this).'::getEntityBy() : Type de champ non géré: '.gettype($value), 1);
             }
