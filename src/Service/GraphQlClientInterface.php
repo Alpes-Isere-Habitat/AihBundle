@@ -22,7 +22,7 @@ interface GraphQlClientInterface
     public function getEntity(string $entity, string $id, string $param): array;
 
     /**
-     * Permet de récupérer une entité de l'API.
+     * Permet de récupérer une ou plusieurs entité de l'API selon un tableau de critères.
      */
     public function getEntityBy(string $entity, array $fields, string $params): array;
 }
