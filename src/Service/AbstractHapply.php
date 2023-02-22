@@ -14,6 +14,8 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 
 abstract class AbstractHapply implements AbstractHapplyInterface
 {
+    protected string $apiLoginUrl = '/api/login_check';
+
     public function __construct(
         public ContainerBagInterface $params,
         public HttpClientInterface $client,
@@ -54,7 +56,7 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         $data = null;
 
         try {
-            $response = $this->client->request('POST', $url.'/api/login_check', $options);
+            $response = $this->client->request('POST', $url.$this->apiLoginUrl, $options);
             $data = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['token'];
         } catch (Exception $e) {
             throw new Exception($e->getMessage(), 1);
