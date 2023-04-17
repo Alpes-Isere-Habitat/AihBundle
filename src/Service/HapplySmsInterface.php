@@ -12,4 +12,6 @@ interface HapplySmsInterface
     public function sendSms(array $dest, string $message): array;
 
     public function getCommunication(int $id): array;
+
+    public function getSmsCount(): int;
 }
