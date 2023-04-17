@@ -11,7 +11,7 @@ use function gettype;
 
 trait GraphQlClientTrait
 {
-    public function getEntities(string $entity, string $params): array
+    public function getEntities(string $entity, string $params): ?array
     {
         $query = '{ '.$entity.' { '.$params.' } }';
         $data = $this->execute($query);
@@ -19,7 +19,7 @@ trait GraphQlClientTrait
         return $data[$entity];
     }
 
-    public function getEntity(string $entity, string $id, string $param): array
+    public function getEntity(string $entity, string $id, string $param): ?array
     {
         $query = '{'.$entity.'(id:'.$id.') { '.$param.' } }';
         $data = $this->execute($query);
@@ -27,7 +27,7 @@ trait GraphQlClientTrait
         return $data[$entity];
     }
 
-    public function getEntityBy(string $entity, array $fields, string $params): array
+    public function getEntityBy(string $entity, array $fields, string $params): ?array
     {
         $query = '{'.$entity.'(';
         foreach ($fields as $field => $value) {
@@ -57,7 +57,7 @@ trait GraphQlClientTrait
         return $data[$entity];
     }
 
-    public function execute(string $query): array
+    public function execute(string $query): ?array
     {
         $token = $this->getTokenFromCache(
             $this->params->get($this->serviceContainerUserParameter),
