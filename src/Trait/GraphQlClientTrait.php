@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Aih\AihBundle\Trait;
 
 use Exception;
+
 use function get_class;
 use function gettype;
 

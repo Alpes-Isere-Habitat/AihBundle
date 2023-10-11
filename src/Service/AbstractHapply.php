@@ -20,8 +20,7 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         public ContainerBagInterface $params,
         public HttpClientInterface $client,
         private CacheInterface $cache
-    ) {
-    }
+    ) {}
 
     public function getTokenFromCache(string $username, string $password, string $url): ?string
     {
