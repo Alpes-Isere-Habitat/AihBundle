@@ -1,0 +1,4 @@
+# config/routes/your_bundle.yaml
+aih_bundle:
+    resource: '@AihBundle/Controller/'
+    type: attribute

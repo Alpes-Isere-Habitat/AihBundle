@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Aih\AihBundle\Ressources\config;
+namespace Aih\AihBundle\Resources\config;
 
 use Aih\AihBundle\Service\CmtApi;
 use Aih\AihBundle\Service\CmtApiInterface;
@@ -40,5 +40,8 @@ return static function (ContainerConfigurator $container): void {
 
             ->set('microsoftgraph', MicrosoftGraph::class)
             ->alias(MicrosoftGraphInterface::class, 'microsoftgraph')
+
+            ->set('Aih\AihBundle\Controller\HealthCheckController')
+            ->tag('controller.service_arguments')
     ;
 };
