@@ -17,7 +17,6 @@ use Aih\AihBundle\Service\HapplySmsInterface;
 use Aih\AihBundle\Service\MicrosoftGraph;
 use Aih\AihBundle\Service\MicrosoftGraphInterface;
 use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
-use Aih\AihBundle\Controller\HealthCheckController;
 
 return static function (ContainerConfigurator $container): void {
     $container->services()->defaults()
@@ -41,9 +40,7 @@ return static function (ContainerConfigurator $container): void {
 
             ->set('microsoftgraph', MicrosoftGraph::class)
             ->alias(MicrosoftGraphInterface::class, 'microsoftgraph')
-    ;
 
-    $container->services()
-        ->set('healthcheckcontroller', HealthCheckController::class)
-        ->tag('controller.service_arguments');
+            ->set('Aih\AihBundle\Controller\HealthCheckController')
+            ->tag('controller.service_arguments');
 };
