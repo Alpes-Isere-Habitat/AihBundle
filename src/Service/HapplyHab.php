@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Service;
 
-use Exception;
-
 class HapplyHab extends AbstractHapply implements HapplyHabInterface
 {
     public function getRoles(string $email): array
@@ -26,8 +24,8 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
 
         try {
             $data = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR);
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage(), 1);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage(), 1);
         }
 
         return $data;
