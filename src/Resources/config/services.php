@@ -42,5 +42,6 @@ return static function (ContainerConfigurator $container): void {
             ->alias(MicrosoftGraphInterface::class, 'microsoftgraph')
 
             ->set('Aih\AihBundle\Controller\HealthCheckController')
-            ->tag('controller.service_arguments');
+            ->tag('controller.service_arguments')
+    ;
 };
