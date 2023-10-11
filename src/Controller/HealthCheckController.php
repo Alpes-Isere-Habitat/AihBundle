@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Aih\AihBundle\Controller;
+
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Routing\Annotation\Route;
+
+class HealthCheckController extends AbstractController
+{
+    #[Route('/healthcheck', name: 'healthcheck')]
+    public function index()
+    {
+        return $this->json([
+            'status' => 'L\'Application est en ligne',
+        ], 200);
+    }
+}

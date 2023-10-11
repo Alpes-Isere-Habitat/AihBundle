@@ -13,6 +13,8 @@ curl https://raw.githubusercontent.com/Alpes-Isere-Habitat/AihBundle/main/docs/.
 
 wget https://raw.githubusercontent.com/Alpes-Isere-Habitat/AihBundle/main/docs/aih.yaml -P ./config/packages
 
+wget https://raw.githubusercontent.com/Alpes-Isere-Habitat/AihBundle/main/docs/aih_route.yaml -P ./config/routes
+
 composer require aih/aih-bundle
 ```
 
