@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Service;
 
-use Exception;
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpOptions;
 use Symfony\Contracts\Cache\CacheInterface;
@@ -58,8 +57,8 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         try {
             $response = $this->client->request('POST', $url.$this->apiLoginUrl, $options);
             $data = json_decode($response->getContent(), true, 512, JSON_THROW_ON_ERROR)['token'];
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage(), 1);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage(), 1);
         }
 
         return $data;
@@ -89,8 +88,8 @@ abstract class AbstractHapply implements AbstractHapplyInterface
     {
         try {
             $response = $this->client->request($method, $url, $options->toArray());
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage(), 1);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage(), 1);
         }
 
         return $response;

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Service;
 
-use Exception;
-
 class HapplySms extends AbstractHapply implements HapplySmsInterface
 {
     public function sendSms(array $dest, string $message): array
@@ -30,7 +28,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         );
 
         if (200 !== $response->getStatusCode()) {
-            throw new Exception('Erreur lors de l\'utilisation de HapplySms');
+            throw new \Exception('Erreur lors de l\'utilisation de HapplySms');
         }
 
         return $response->toArray();
@@ -53,7 +51,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         );
 
         if (200 !== $response->getStatusCode()) {
-            throw new Exception('Erreur lors de l\'utilisation de HapplySms');
+            throw new \Exception('Erreur lors de l\'utilisation de HapplySms');
         }
 
         return $response->toArray();
@@ -76,7 +74,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         );
 
         if (200 !== $response->getStatusCode()) {
-            throw new Exception('Erreur lors de l\'utilisation de HapplySms');
+            throw new \Exception('Erreur lors de l\'utilisation de HapplySms');
         }
 
         return $response->toArray();
@@ -99,7 +97,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         );
 
         if (200 !== $response->getStatusCode()) {
-            throw new Exception('Erreur lors de l\'utilisation de HapplySms');
+            throw new \Exception('Erreur lors de l\'utilisation de HapplySms');
         }
 
         return $response->toArray()['data']['smsCount'];

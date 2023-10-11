@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Trait;
 
-use Exception;
-
-use function get_class;
-use function gettype;
-
 trait GraphQlClientTrait
 {
     public function getEntities(string $entity, string $params): ?array
@@ -31,7 +26,7 @@ trait GraphQlClientTrait
     {
         $query = '{'.$entity.'(';
         foreach ($fields as $field => $value) {
-            switch (gettype($value)) {
+            switch (\gettype($value)) {
                 case 'string':
                     $query .= $field.': "'.$value.'"';
                     break;
@@ -45,7 +40,7 @@ trait GraphQlClientTrait
                     $query .= $field.': '.json_encode($value, JSON_THROW_ON_ERROR, 512);
                     break;
                 default:
-                    throw new Exception(get_class($this).'::getEntityBy() : Type de champ non géré: '.gettype($value), 1);
+                    throw new \Exception(\get_class($this).'::getEntityBy() : Type de champ non géré: '.\gettype($value), 1);
             }
             if ($field !== array_key_last($fields)) {
                 $query .= ', ';
@@ -87,12 +82,12 @@ trait GraphQlClientTrait
                     $messages = ['Erreur inconnue'];
                 }
 
-                throw new Exception(get_class($this).' : '.implode('; ', $messages), 1);
+                throw new \Exception(\get_class($this).' : '.implode('; ', $messages), 1);
             }
 
             return $response['data'];
-        } catch (Exception $e) {
-            throw new Exception($e->getMessage(), 1);
+        } catch (\Exception $e) {
+            throw new \Exception($e->getMessage(), 1);
         }
     }
 }
