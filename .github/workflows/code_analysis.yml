@@ -5,17 +5,13 @@ on: [push]
 jobs:
   static-code-analysis:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        php-versions: ['8.0', '8.1']
     steps:
       - uses: actions/checkout@master
       - name: PHPStan
-        uses: docker://jakzal/phpqa:php${{ matrix.php-versions }}
+        uses: docker://jakzal/phpqa:php8.1
         with:
           args: phpstan analyze src
       - name: PHP-CS-Fixer
-        uses: docker://jakzal/phpqa:php${{ matrix.php-versions }}
+        uses: docker://jakzal/phpqa:php8.1
         with:
-          args: php-cs-fixer fix --dry-run --using-cache=no 
+          args: php-cs-fixer fix --dry-run --using-cache=no
