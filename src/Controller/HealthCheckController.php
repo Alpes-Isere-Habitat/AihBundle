@@ -14,7 +14,7 @@ class HealthCheckController extends AbstractController
     public function index(): Response
     {
         return $this->json([
-            'status' => 'L\'Application est en ligne',
+            'status' => 'OK',
         ], 200);
     }
 }
