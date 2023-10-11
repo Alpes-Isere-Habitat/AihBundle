@@ -10,25 +10,12 @@ jobs:
       matrix:
         php-versions: ['8.0', '8.1']
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Setup PHP, with composer and extensions
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: ${{ matrix.php-versions }}
-          extensions: mbstring, xml, ctype, iconv, intl
-      - name: Get composer cache directory
-        id: composer-cache
-        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
-      - name: Cache composer dependencies
-        uses: actions/cache@v1
-        with:
-          path: ${{ steps.composer-cache.outputs.dir }}
-          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-          restore-keys: ${{ runner.os }}-composer-
-      - name: Install Composer dependencies
-        run: composer install --no-progress --no-suggest --prefer-dist --optimize-autoloader
+      - uses: actions/checkout@master
       - name: PHPStan
-        run: composer test:phpstan
+        uses: docker://jakzal/phpqa:php${{ matrix.php-versions }}
+        with:
+          args: phpstan analyze src
       - name: PHP-CS-Fixer
-        run: composer test:cs
+        uses: docker://jakzal/phpqa:php${{ matrix.php-versions }}
+        with:
+          args: php-cs-fixer fix --dry-run --using-cache=no
