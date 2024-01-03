@@ -4,4 +4,6 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Service;
 
-interface HapplyApiInterface extends GraphQlClientInterface {}
+interface HapplyApiInterface extends GraphQlClientInterface
+{
+}
