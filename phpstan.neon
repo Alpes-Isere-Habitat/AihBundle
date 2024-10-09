@@ -12,6 +12,11 @@ parameters:
             count: 1
             path: src/AihBundle.php
 
+        -
+            message: '#Method Aih\AihBundle\AihBundle::getContainerExtension() should return Aih\AihBundle\DependencyInjection\AihExtension|null but returns Symfony\Component\DependencyInjection\Extension\ExtensionInterface|null.#'
+            count: 1
+            path: src/AihBundle.php
+
     checkMissingIterableValueType: false
     checkGenericClassInNonGenericObjectType: false
     

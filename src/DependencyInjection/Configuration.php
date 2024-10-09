@@ -134,6 +134,51 @@ class Configuration implements ConfigurationInterface
                         'Vous devez spécifier le nom du groupe d\'utilisateurs Azure.'
                     )
                 ->end()
+                ->scalarNode('BUCKET_BACKUP_NAME')
+                    ->info(
+                        'Vous devez spécifier le nom du bucket de sauvegarde.'
+                    )
+                ->end()
+                ->scalarNode('BUCKET_BACKUP_ACCESS_KEY')
+                    ->info(
+                        'Vous devez spécifier la clé d\'accès du bucket de sauvegarde.'
+                    )
+                ->end()
+                ->scalarNode('BUCKET_BACKUP_SECRET_KEY')
+                    ->info(
+                        'Vous devez spécifier le secret de la clé d\'accès du bucket de sauvegarde.'
+                    )
+                ->end()
+                ->scalarNode('BUCKET_PATH')
+                    ->info(
+                        'Vous devez spécifier le chemin du bucket de sauvegarde.'
+                    )
+                ->end()
+                ->scalarNode('DATABASE_TYPE')
+                    ->info(
+                        'Vous devez spécifier le type de base de données.'
+                    )
+                ->end()
+                ->scalarNode('DATABASE_USER')
+                    ->info(
+                        'Vous devez spécifier l\'utilisateur de la base de données.'
+                    )
+                ->end()
+                ->scalarNode('DATABASE_NAME')
+                    ->info(
+                        'Vous devez spécifier le nom de la base de données.'
+                    )
+                ->end()
+                ->scalarNode('CONTAINER_NAME')
+                    ->info(
+                        'Vous devez spécifier le nom du container Docker.'
+                    )
+                ->end()
+                ->scalarNode('BUCKET_ENDPOINT')
+                    ->info(
+                        'Vous devez spécifier l\'URL de l\'endpoint S3.'
+                    )
+                ->end()
             ->end()
         ;
 
