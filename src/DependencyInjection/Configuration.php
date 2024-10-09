@@ -135,6 +135,7 @@ class Configuration implements ConfigurationInterface
                     )
                 ->end()
                 ->scalarNode('BUCKET_BACKUP_NAME')
+                    ->isRequired()
                     ->info(
                         'Vous devez spécifier le nom du bucket de sauvegarde.'
                     )
