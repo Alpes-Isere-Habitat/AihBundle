@@ -30,8 +30,7 @@ class RestoreProdCommand extends Command
     private const DUMP_PATH_GZ = 'var/dump.sql.gz';
 
     public function __construct(
-        private readonly ParameterBagInterface $parameterBag,
-        private readonly EntityManagerInterface $entityManager,
+        private ParameterBagInterface $parameterBag,
     ) {
         parent::__construct();
     }
@@ -153,11 +152,12 @@ class RestoreProdCommand extends Command
     private function confirm(SymfonyStyle $io): bool
     {
         $question = new ConfirmationQuestion('Voulez-vous vraiment restaurer la base de données de production ?', false);
-        if (!$io->askQuestion($question)) {
+        $response = $io->askQuestion($question);
+        if ($response !== true) {
             $io->error('Restauration annulée');
             return false;
         }
-
+    
         return true;
     }
 
