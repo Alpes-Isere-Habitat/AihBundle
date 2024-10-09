@@ -52,6 +52,8 @@ class AihExtension extends Extension
         $container->setParameter('aih_aih.database.type', $config['DATABASE_TYPE']);
         $container->setParameter('aih_aih.database.user', $config['DATABASE_USER']);
         $container->setParameter('aih_aih.database.name', $config['DATABASE_NAME']);
+        $container->setParameter('aih_aih.container.name', $config['CONTAINER_NAME']);
+        $container->setParameter('aih_aih.bucket.endpoint', $config['BUCKET_ENDPOINT']);
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container): Configuration

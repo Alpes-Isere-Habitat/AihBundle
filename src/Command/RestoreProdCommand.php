@@ -29,8 +29,6 @@ class RestoreProdCommand extends Command
 {
     private const BUCKET_REGION = 'fr-par';
     private const BUCKET_VERSION = 'latest';
-    private const BUCKET_ENDPOINT = 'https://s3.fr-par.scw.cloud';
-    private const CONTAINER_NAME = 'database';
     private const DUMP_PATH = 'var/dump.sql';
     private const DUMP_PATH_GZ = 'var/dump.sql.gz';
 
@@ -82,7 +80,7 @@ class RestoreProdCommand extends Command
 
         // Import the dump into the database
         $io->note('Import du dump dans la base de données');
-        $containerId = $this->getDockerContainerId(self::CONTAINER_NAME);
+        $containerId = $this->getDockerContainerId($this->parameterBag->get('CONTAINER_NAME'));
         $this->copyDumpToContainer($containerId, self::DUMP_PATH);
         $this->importDumpIntoDatabase($containerId);
 
@@ -119,7 +117,7 @@ class RestoreProdCommand extends Command
         return new S3Client([
             'version' => self::BUCKET_VERSION,
             'region' => self::BUCKET_REGION,
-            'endpoint' => self::BUCKET_ENDPOINT,
+            'endpoint' => $this->parameterBag->get('BUCKET_ENDPOINT'),
             'bucket' => $this->parameterBag->get('BUCKET_BACKUP_NAME'),
             'credentials' => [
                 'key' => $this->parameterBag->get('BUCKET_BACKUP_ACCESS_KEY'),
