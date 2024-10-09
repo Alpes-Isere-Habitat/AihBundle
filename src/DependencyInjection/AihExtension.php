@@ -44,6 +44,14 @@ class AihExtension extends Extension
         $container->setParameter('aih_aih.azure.clientid', $config['AZURE_CLIENT_ID']);
         $container->setParameter('aih_aih.azure.clientsecret', $config['AZURE_CLIENT_SECRET']);
         $container->setParameter('aih_aih.azure.alluser', $config['AZURE_GROUP_ALL_USER']);
+
+        $container->setParameter('aih_aih.bucket.backup.name', $config['BUCKET_BACKUP_NAME']);
+        $container->setParameter('aih_aih.bucket.backup.access_key', $config['BUCKET_BACKUP_ACCESS_KEY']);
+        $container->setParameter('aih_aih.bucket.backup.secret_key', $config['BUCKET_BACKUP_SECRET_KEY']);
+        $container->setParameter('aih_aih.bucket.path', $config['BUCKET_PATH']);
+        $container->setParameter('aih_aih.database.type', $config['DATABASE_TYPE']);
+        $container->setParameter('aih_aih.database.user', $config['DATABASE_USER']);
+        $container->setParameter('aih_aih.database.name', $config['DATABASE_NAME']);
     }
 
     public function getConfiguration(array $config, ContainerBuilder $container): Configuration

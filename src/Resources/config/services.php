@@ -43,5 +43,8 @@ return static function (ContainerConfigurator $container): void {
 
             ->set('Aih\AihBundle\Controller\HealthCheckController')
             ->tag('controller.service_arguments')
+
+            ->set('Aih\AihBundle\Command\RestoreProdCommand')
+            ->tag('console.command')
     ;
 };
