@@ -17,7 +17,7 @@
         "symfony/http-kernel": "^6.0 || ^7.0 || ^7.1",
         "symfony/http-client": "^6.0 || ^7.0 || ^7.1",
         "microsoft/microsoft-graph": "^1.66",
-        "symfony/console": "^7.1",
+        "symfony/console": "^7.0 || ^7.1",
         "doctrine/orm": "^2.0 || ^3.0",
         "aws/aws-sdk-php": "^3.323"
     },
