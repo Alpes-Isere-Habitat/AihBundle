@@ -80,7 +80,7 @@ class RestoreProdCommand extends Command
 
         // Import the dump into the database
         $io->note('Import du dump dans la base de données');
-        $containerId = $this->getDockerContainerId($this->parameterBag->get('CONTAINER_NAME'));
+        $containerId = $this->getDockerContainerId($this->parameterBag->get('aih_aih.container.name'));
         $this->copyDumpToContainer($containerId, self::DUMP_PATH);
         $this->importDumpIntoDatabase($containerId);
 
@@ -117,11 +117,11 @@ class RestoreProdCommand extends Command
         return new S3Client([
             'version' => self::BUCKET_VERSION,
             'region' => self::BUCKET_REGION,
-            'endpoint' => $this->parameterBag->get('BUCKET_ENDPOINT'),
-            'bucket' => $this->parameterBag->get('BUCKET_BACKUP_NAME'),
+            'endpoint' => $this->parameterBag->get('aih_aih.bucket.endpoint'),
+            'bucket' => $this->parameterBag->get('aih_aih.bucket.backup.name'),
             'credentials' => [
-                'key' => $this->parameterBag->get('BUCKET_BACKUP_ACCESS_KEY'),
-                'secret' => $this->parameterBag->get('BUCKET_BACKUP_SECRET_KEY'),
+                'key' => $this->parameterBag->get('aih_aih.bucket.backup.access_key'),
+                'secret' => $this->parameterBag->get('aih_aih.bucket.backup.secret_key'),
             ],
         ]);
     }
@@ -131,9 +131,9 @@ class RestoreProdCommand extends Command
      */
     private function getMostRecentDumpKey(S3Client $s3, SymfonyStyle $io): ?string
     {
-        $path = $this->parameterBag->get('BUCKET_PATH');
+        $path = $this->parameterBag->get('aih_aih.bucket.path');
         $objects = $s3->listObjectsV2([
-            'Bucket' => $this->parameterBag->get('BUCKET_BACKUP_NAME'),
+            'Bucket' => $this->parameterBag->get('aih_aih.bucket.backup.name'),
             'Prefix' => $path,
         ]);
 
@@ -171,7 +171,7 @@ class RestoreProdCommand extends Command
     private function downloadS3Object(S3Client $s3, string $key, string $saveAs): void
     {
         $s3->getObject([
-            'Bucket' => $this->parameterBag->get('BUCKET_BACKUP_NAME'),
+            'Bucket' => $this->parameterBag->get('aih_aih.bucket.backup.name'),
             'Key' => $key,
             'SaveAs' => $saveAs,
         ]);
@@ -210,9 +210,9 @@ class RestoreProdCommand extends Command
      */
     private function importDumpIntoDatabase(string $containerId): void
     {
-        $databaseType = $this->parameterBag->get('DATABASE_TYPE');
-        $user = $this->parameterBag->get('DATABASE_USER');
-        $name = $this->parameterBag->get('DATABASE_NAME');
+        $databaseType = $this->parameterBag->get('aih_aih.database.type');
+        $user = $this->parameterBag->get('aih_aih.database.user');
+        $name = $this->parameterBag->get('aih_aih.database.name');
 
         match ($databaseType) {
             'postgresql' => exec("docker exec -i {$containerId} bash -c 'psql -U {$user} -d {$name} -f /tmp/dump.sql' > /dev/null 2>&1"),
