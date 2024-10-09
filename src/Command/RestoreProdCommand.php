@@ -1,9 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Aih\AihBundle\Command;
 
 use Aws\S3\S3Client;
-use Doctrine\ORM\EntityManagerInterface;
+
+use function count;
+
+use Exception;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -56,8 +61,9 @@ class RestoreProdCommand extends Command
 
         // Get the most recent dump from S3
         $dumpKey = $this->getMostRecentDumpKey($s3, $io);
-        if ($dumpKey === null) {
+        if (null === $dumpKey) {
             $io->error('Aucun dump trouvé');
+
             return Command::SUCCESS;
         }
 
@@ -98,13 +104,12 @@ class RestoreProdCommand extends Command
             if (file_exists($file)) {
                 try {
                     unlink($file);
-                } catch (\Exception $e) {
+                } catch (Exception $e) {
                     // Ignorer les exceptions
                 }
             }
         }
     }
-
 
     /**
      * Création d'un client S3.
@@ -135,11 +140,11 @@ class RestoreProdCommand extends Command
         ]);
 
         $dumps = $objects['Contents'] ?? [];
-        if (count($dumps) === 0) {
+        if (0 === count($dumps)) {
             return null;
         }
 
-        usort($dumps, fn($a, $b) => $b['LastModified'] <=> $a['LastModified']);
+        usort($dumps, fn ($a, $b) => $b['LastModified'] <=> $a['LastModified']);
 
         $io->note('Dernier dump disponible : '.$dumps[0]['LastModified']);
 
@@ -153,11 +158,12 @@ class RestoreProdCommand extends Command
     {
         $question = new ConfirmationQuestion('Voulez-vous vraiment restaurer la base de données de production ?', false);
         $response = $io->askQuestion($question);
-        if ($response !== true) {
+        if (true !== $response) {
             $io->error('Restauration annulée');
+
             return false;
         }
-    
+
         return true;
     }
 
@@ -189,6 +195,7 @@ class RestoreProdCommand extends Command
     {
         $process = new Process(['docker', 'compose', 'ps', '-q', $serviceName]);
         $process->mustRun();
+
         return trim($process->getOutput());
     }
 
@@ -197,7 +204,7 @@ class RestoreProdCommand extends Command
      */
     private function copyDumpToContainer(string $containerId, string $dumpPath): void
     {
-        exec("docker cp $dumpPath $containerId:/tmp/dump.sql");
+        exec("docker cp {$dumpPath} {$containerId}:/tmp/dump.sql");
     }
 
     /**
@@ -210,9 +217,9 @@ class RestoreProdCommand extends Command
         $name = $this->parameterBag->get('DATABASE_NAME');
 
         match ($databaseType) {
-            'postgresql' => exec("docker exec -i $containerId bash -c 'psql -U $user -d $name -f /tmp/dump.sql' > /dev/null 2>&1"),
-            'mysql' => exec("docker exec -i $containerId bash -c 'mysql -u $user -p $name < /tmp/dump.sql' > /dev/null 2>&1"),
-            default => throw new \Exception('Type de base de données inconnu'),
+            'postgresql' => exec("docker exec -i {$containerId} bash -c 'psql -U {$user} -d {$name} -f /tmp/dump.sql' > /dev/null 2>&1"),
+            'mysql' => exec("docker exec -i {$containerId} bash -c 'mysql -u {$user} -p {$name} < /tmp/dump.sql' > /dev/null 2>&1"),
+            default => throw new Exception('Type de base de données inconnu'),
         };
     }
 }
