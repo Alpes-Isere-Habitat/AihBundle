@@ -60,9 +60,4 @@ class AihExtension extends Extension
     {
         return new Configuration();
     }
-
-    public function getAlias(): string
-    {
-        return parent::getAlias();
-    }
 }

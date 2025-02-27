@@ -13,4 +13,13 @@ class HapplyApiGd extends AbstractHapply implements HapplyApiGdInterface
     private string $serviceContainerUserParameter = 'aih_aih.happlyapigd.user';
     private string $serviceContainerPasswordParameter = 'aih_aih.happlyapigd.password';
     private string $serviceContainerUrlParameter = 'aih_aih.happlyapigd.url';
+
+    protected function getRequiredParameters(): array
+    {
+        return [
+            $this->serviceContainerUserParameter,
+            $this->serviceContainerPasswordParameter,
+            $this->serviceContainerUrlParameter,
+        ];
+    }
 }

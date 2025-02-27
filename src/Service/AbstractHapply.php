@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Aih\AihBundle\Service;
 
 use Exception;
+
+use function sprintf;
+
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpOptions;
 use Symfony\Contracts\Cache\CacheInterface;
@@ -21,6 +24,36 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         public HttpClientInterface $client,
         private CacheInterface $cache
     ) {
+        $this->validateServiceConfiguration($this->getRequiredParameters());
+    }
+
+    /**
+     * Retourne un tableau des paramètres requis pour le service.
+     *
+     * @return array<string> Liste des paramètres requis
+     */
+    abstract protected function getRequiredParameters(): array;
+
+    /**
+     * Méthode utilitaire qui simplifie la validation des paramètres de configuration du service.
+     *
+     * @param array<string> $requiredParameters Liste des paramètres requis
+     *
+     * @throws Exception Si un paramètre requis n'est pas défini
+     */
+    protected function validateServiceConfiguration(array $requiredParameters): void
+    {
+        $missingParameters = [];
+
+        foreach ($requiredParameters as $param) {
+            if (!$this->params->get($param)) {
+                $missingParameters[] = $param;
+            }
+        }
+
+        if (!empty($missingParameters)) {
+            throw new Exception(sprintf('Missing parameters: %s for service %s', implode(', ', $missingParameters), self::class));
+        }
     }
 
     public function getTokenFromCache(string $username, string $password, string $url): ?string

@@ -4,11 +4,21 @@ declare(strict_types=1);
 
 namespace Aih\AihBundle\Service;
 
+use Exception;
 use Microsoft\Graph\Graph;
 use Microsoft\Graph\Model\User;
 
 class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
 {
+    protected function getRequiredParameters(): array
+    {
+        return [
+            'aih_aih.azure.tenantid',
+            'aih_aih.azure.clientid',
+            'aih_aih.azure.clientsecret',
+        ];
+    }
+
     public function getUser(string $user): User
     {
         $graph = $this->getGraph();
@@ -21,6 +31,10 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
 
     public function getAllUsers(): array
     {
+        if (!$this->params->get('aih_aih.azure.alluser')) {
+            throw new Exception('aih_aih.azure.alluser is not set');
+        }
+
         $groupId = $this->params->get('aih_aih.azure.alluser');
 
         return $this->getAllUsersByGroupId($groupId);
