@@ -25,7 +25,7 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         public HttpClientInterface $client,
         private CacheInterface $cache
     ) {
-        if (!empty($this->requiredParameters)) {
+        if ([] !== $this->requiredParameters) {
             $this->validateServiceConfiguration($this->requiredParameters);
         }
     }
