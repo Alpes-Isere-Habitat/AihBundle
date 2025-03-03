@@ -13,15 +13,12 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
     private string $serviceContainerUrlParameter = 'aih_aih.happlyhab.url';
     private string $serviceContainerApplicationParameter = 'aih_aih.happlyhab.application';
 
-    protected function getRequiredParameters(): array
-    {
-        return [
-            $this->serviceContainerUserParameter,
-            $this->serviceContainerPasswordParameter,
-            $this->serviceContainerUrlParameter,
-            $this->serviceContainerApplicationParameter,
-        ];
-    }
+    protected array $requiredParameters = [
+        'aih_aih.happlyhab.user',
+        'aih_aih.happlyhab.password',
+        'aih_aih.happlyhab.url',
+        'aih_aih.happlyhab.application',
+    ];
 
     public function getRoles(string $email): array
     {

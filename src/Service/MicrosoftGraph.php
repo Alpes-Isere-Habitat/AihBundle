@@ -10,14 +10,11 @@ use Microsoft\Graph\Model\User;
 
 class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
 {
-    protected function getRequiredParameters(): array
-    {
-        return [
-            'aih_aih.azure.tenantid',
-            'aih_aih.azure.clientid',
-            'aih_aih.azure.clientsecret',
-        ];
-    }
+    protected array $requiredParameters = [
+        'aih_aih.azure.tenantid',
+        'aih_aih.azure.clientid',
+        'aih_aih.azure.clientsecret',
+    ];
 
     public function getUser(string $user): User
     {

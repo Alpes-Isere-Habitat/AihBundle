@@ -8,18 +8,11 @@ use Exception;
 
 class HapplySms extends AbstractHapply implements HapplySmsInterface
 {
-    private string $serviceContainerUserParameter = 'aih_aih.happlysms.user';
-    private string $serviceContainerPasswordParameter = 'aih_aih.happlysms.password';
-    private string $serviceContainerUrlParameter = 'aih_aih.happlysms.url';
-
-    protected function getRequiredParameters(): array
-    {
-        return [
-            $this->serviceContainerUserParameter,
-            $this->serviceContainerPasswordParameter,
-            $this->serviceContainerUrlParameter,
-        ];
-    }
+    protected array $requiredParameters = [
+        'aih_aih.happlysms.user',
+        'aih_aih.happlysms.password',
+        'aih_aih.happlysms.url',
+    ];
 
     public function sendSms(array $dest, string $message): array
     {

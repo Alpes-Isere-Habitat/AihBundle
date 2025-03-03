@@ -14,12 +14,9 @@ class HapplyApi extends AbstractHapply implements HapplyApiInterface
     private string $serviceContainerPasswordParameter = 'aih_aih.happlyapi.password';
     private string $serviceContainerUrlParameter = 'aih_aih.happlyapi.url';
 
-    protected function getRequiredParameters(): array
-    {
-        return [
-            $this->serviceContainerUserParameter,
-            $this->serviceContainerPasswordParameter,
-            $this->serviceContainerUrlParameter,
-        ];
-    }
+    protected array $requiredParameters = [
+        'aih_aih.happlyapi.user',
+        'aih_aih.happlyapi.password',
+        'aih_aih.happlyapi.url',
+    ];
 }

@@ -18,21 +18,17 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 abstract class AbstractHapply implements AbstractHapplyInterface
 {
     protected string $apiLoginUrl = '/api/login_check';
+    protected array $requiredParameters = [];
 
     public function __construct(
         public ContainerBagInterface $params,
         public HttpClientInterface $client,
         private CacheInterface $cache
     ) {
-        $this->validateServiceConfiguration($this->getRequiredParameters());
+        if (!empty($this->requiredParameters)) {
+            $this->validateServiceConfiguration($this->requiredParameters);
+        }
     }
-
-    /**
-     * Retourne un tableau des paramètres requis pour le service.
-     *
-     * @return array<string> Liste des paramètres requis
-     */
-    abstract protected function getRequiredParameters(): array;
 
     /**
      * Méthode utilitaire qui simplifie la validation des paramètres de configuration du service.
@@ -46,13 +42,13 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         $missingParameters = [];
 
         foreach ($requiredParameters as $param) {
-            if (!$this->params->get($param)) {
+            if (!$this->params->has($param)) {
                 $missingParameters[] = $param;
             }
         }
 
         if (!empty($missingParameters)) {
-            throw new Exception(sprintf('Missing parameters: %s for service %s', implode(', ', $missingParameters), self::class));
+            throw new Exception(sprintf('%s -> Missing parameters %s', $this::class, implode(', ', $missingParameters)));
         }
     }
 
