@@ -9,6 +9,9 @@ use Aws\S3\S3Client;
 use function count;
 
 use Exception;
+
+use function sprintf;
+
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -36,6 +39,38 @@ class RestoreProdCommand extends Command
         private ParameterBagInterface $parameterBag,
     ) {
         parent::__construct();
+
+        $this->validateServiceConfiguration([
+            'aih_aih.bucket.backup.name',
+            'aih_aih.bucket.backup.access_key',
+            'aih_aih.bucket.backup.secret_key',
+            'aih_aih.bucket.path',
+            'aih_aih.database.type',
+            'aih_aih.database.user',
+            'aih_aih.database.name',
+        ]);
+    }
+
+    /**
+     * Méthode utilitaire qui simplifie la validation des paramètres de configuration du service.
+     *
+     * @param array<string> $requiredParameters Liste des paramètres requis
+     *
+     * @throws Exception Si un paramètre requis n'est pas défini
+     */
+    private function validateServiceConfiguration(array $requiredParameters): void
+    {
+        $missingParameters = [];
+
+        foreach ($requiredParameters as $param) {
+            if (!$this->parameterBag->has($param)) {
+                $missingParameters[] = $param;
+            }
+        }
+
+        if ([] !== $missingParameters) {
+            throw new Exception(sprintf('%s -> Missing parameters %s', $this::class, implode(', ', $missingParameters)));
+        }
     }
 
     /**
@@ -194,7 +229,7 @@ class RestoreProdCommand extends Command
         $process = new Process(['docker', 'compose', 'ps', '-q', $serviceName]);
         $process->mustRun();
 
-        return trim($process->getOutput());
+        return mb_trim($process->getOutput());
     }
 
     /**

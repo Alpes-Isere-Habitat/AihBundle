@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace Aih\AihBundle\Service;
 
 use Exception;
+
+use function sprintf;
+
 use Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface;
 use Symfony\Component\HttpClient\HttpOptions;
 use Symfony\Contracts\Cache\CacheInterface;
@@ -15,12 +18,38 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 abstract class AbstractHapply implements AbstractHapplyInterface
 {
     protected string $apiLoginUrl = '/api/login_check';
+    protected array $requiredParameters = [];
 
     public function __construct(
         public ContainerBagInterface $params,
         public HttpClientInterface $client,
         private CacheInterface $cache
     ) {
+        if ([] !== $this->requiredParameters) {
+            $this->validateServiceConfiguration($this->requiredParameters);
+        }
+    }
+
+    /**
+     * Méthode utilitaire qui simplifie la validation des paramètres de configuration du service.
+     *
+     * @param array<string> $requiredParameters Liste des paramètres requis
+     *
+     * @throws Exception Si un paramètre requis n'est pas défini
+     */
+    protected function validateServiceConfiguration(array $requiredParameters): void
+    {
+        $missingParameters = [];
+
+        foreach ($requiredParameters as $param) {
+            if (!$this->params->has($param)) {
+                $missingParameters[] = $param;
+            }
+        }
+
+        if ([] !== $missingParameters) {
+            throw new Exception(sprintf('%s -> Missing parameters %s', $this::class, implode(', ', $missingParameters)));
+        }
     }
 
     public function getTokenFromCache(string $username, string $password, string $url): ?string

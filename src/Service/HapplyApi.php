@@ -13,4 +13,10 @@ class HapplyApi extends AbstractHapply implements HapplyApiInterface
     private string $serviceContainerUserParameter = 'aih_aih.happlyapi.user';
     private string $serviceContainerPasswordParameter = 'aih_aih.happlyapi.password';
     private string $serviceContainerUrlParameter = 'aih_aih.happlyapi.url';
+
+    protected array $requiredParameters = [
+        'aih_aih.happlyapi.user',
+        'aih_aih.happlyapi.password',
+        'aih_aih.happlyapi.url',
+    ];
 }

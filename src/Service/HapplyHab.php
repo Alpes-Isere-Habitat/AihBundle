@@ -8,6 +8,13 @@ use Exception;
 
 class HapplyHab extends AbstractHapply implements HapplyHabInterface
 {
+    protected array $requiredParameters = [
+        'aih_aih.happlyhab.user',
+        'aih_aih.happlyhab.password',
+        'aih_aih.happlyhab.url',
+        'aih_aih.happlyhab.application',
+    ];
+
     public function getRoles(string $email): array
     {
         $token = $this->getTokenFromCache(

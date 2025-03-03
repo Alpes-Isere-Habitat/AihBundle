@@ -8,6 +8,12 @@ use Exception;
 
 class HapplySms extends AbstractHapply implements HapplySmsInterface
 {
+    protected array $requiredParameters = [
+        'aih_aih.happlysms.user',
+        'aih_aih.happlysms.password',
+        'aih_aih.happlysms.url',
+    ];
+
     public function sendSms(array $dest, string $message): array
     {
         $token = $this->getTokenFromCache(
