@@ -23,16 +23,16 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
     public function getRoles(string $email): array
     {
         $token = $this->getTokenFromCache(
-            $this->params->get($this->serviceContainerUserParameter),
-            $this->params->get($this->serviceContainerPasswordParameter),
-            $this->params->get($this->serviceContainerUrlParameter)
+            $this->params->get('aih_aih.happlyhab.user'),
+            $this->params->get('aih_aih.happlyhab.password'),
+            $this->params->get('aih_aih.happlyhab.url')
         );
 
         $options = $this->makeOptionsWithToken($token);
 
         $response = $this->makeRequest(
             'GET',
-            $this->params->get($this->serviceContainerUrlParameter).'/roles/'.$email.'/'.$this->params->get($this->serviceContainerApplicationParameter),
+            $this->params->get('aih_aih.happlyhab.url').'/roles/'.$email.'/'.$this->params->get('aih_aih.happlyhab.application'),
             $options
         );
 
