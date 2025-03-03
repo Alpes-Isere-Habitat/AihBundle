@@ -28,7 +28,7 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
 
     public function getAllUsers(): array
     {
-        if (!$this->params->get('aih_aih.azure.alluser')) {
+        if (!$this->params->has('aih_aih.azure.alluser')) {
             throw new Exception('aih_aih.azure.alluser is not set');
         }
 

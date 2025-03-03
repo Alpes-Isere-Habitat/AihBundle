@@ -47,7 +47,7 @@ abstract class AbstractHapply implements AbstractHapplyInterface
             }
         }
 
-        if (!empty($missingParameters)) {
+        if ([] !== $missingParameters) {
             throw new Exception(sprintf('%s -> Missing parameters %s', $this::class, implode(', ', $missingParameters)));
         }
     }
