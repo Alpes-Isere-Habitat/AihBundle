@@ -61,7 +61,7 @@ class AihExtension extends Extension
         return new Configuration();
     }
 
-    private function setParameterIfNotNull(ContainerBuilder $container, string $key, string $value): void
+    private function setParameterIfNotNull(ContainerBuilder $container, string $key, ?string $value): void
     {
         if (null !== $value) {
             $container->setParameter($key, $value);
