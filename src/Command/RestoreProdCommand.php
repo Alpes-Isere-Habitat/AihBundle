@@ -36,6 +36,17 @@ class RestoreProdCommand extends Command
         private ParameterBagInterface $parameterBag,
     ) {
         parent::__construct();
+        if (
+            null === $this->parameterBag->get('aih_aih.bucket.backup.name')
+            || null === $this->parameterBag->get('aih_aih.bucket.backup.access_key')
+            || null === $this->parameterBag->get('aih_aih.bucket.backup.secret_key')
+            || null === $this->parameterBag->get('aih_aih.bucket.path')
+            || null === $this->parameterBag->get('aih_aih.database.type')
+            || null === $this->parameterBag->get('aih_aih.database.user')
+            || null === $this->parameterBag->get('aih_aih.database.name')
+        ) {
+            throw new Exception('Paramètres manquants');
+        }
     }
 
     /**
@@ -194,7 +205,7 @@ class RestoreProdCommand extends Command
         $process = new Process(['docker', 'compose', 'ps', '-q', $serviceName]);
         $process->mustRun();
 
-        return trim($process->getOutput());
+        return mb_trim($process->getOutput());
     }
 
     /**
