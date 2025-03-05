@@ -13,6 +13,11 @@ interface HapplySmsInterface
 
     public function getCommunication(int $id): array;
 
+    /**
+     * @param int[] $ids
+     */
+    public function getCommunicationsByIds(array $ids): array;
+
     public function getCommunications(): array;
 
     public function getSmsCount(): int;
