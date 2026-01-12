@@ -15,6 +15,6 @@ class AihBundle extends Bundle
             $this->extension = new AihExtension();
         }
 
-        return $this->extension ?: null;
+        return $this->extension instanceof AihExtension ? $this->extension : null;
     }
 }

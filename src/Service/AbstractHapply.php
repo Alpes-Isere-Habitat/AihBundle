@@ -18,6 +18,7 @@ use Symfony\Contracts\HttpClient\ResponseInterface;
 abstract class AbstractHapply implements AbstractHapplyInterface
 {
     protected string $apiLoginUrl = '/api/login_check';
+    /** @var array<string> */
     protected array $requiredParameters = [];
 
     public function __construct(
@@ -107,6 +108,7 @@ abstract class AbstractHapply implements AbstractHapplyInterface
         return $options;
     }
 
+    /** @param array<string, mixed> $json */
     public function addJsonToOptions(HttpOptions $options, array $json): HttpOptions
     {
         $options->setJson($json);

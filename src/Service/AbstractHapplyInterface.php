@@ -19,5 +19,6 @@ interface AbstractHapplyInterface
 
     public function makeOptionsWithToken(string $token): HttpOptions;
 
+    /** @param array<string, mixed> $json */
     public function addJsonToOptions(HttpOptions $options, array $json): HttpOptions;
 }

@@ -2,20 +2,6 @@ parameters:
     level: 6
     paths:
         - src
-    ignoreErrors:
-        -
-            message: '#Call to an undefined method Symfony\\Component\\Config\\Definition\\Builder\\NodeDefinition::children\(\)#'
-            count: 1
-            path: src/DependencyInjection/Configuration.php
-        -
-            message: '#Short ternary operator is not allowed. Use null coalesce operator if applicable or consider using long ternary#'
-            count: 1
-            path: src/AihBundle.php
-
-        -
-            message: '#Method Aih\AihBundle\AihBundle::getContainerExtension() should return Aih\AihBundle\DependencyInjection\AihExtension|null but returns Symfony\Component\DependencyInjection\Extension\ExtensionInterface|null.#'
-            count: 1
-            path: src/AihBundle.php
 
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon

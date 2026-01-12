@@ -214,6 +214,8 @@ class RestoreProdCommand extends Command
 
     /**
      * Exécution d'une commande en ligne de commande.
+     *
+     * @param array<string> $command
      */
     private function runProcess(array $command): void
     {

@@ -56,6 +56,7 @@ class AihExtension extends Extension
         $this->setParameterIfNotNull($container, 'aih_aih.bucket.endpoint', $config['BUCKET_ENDPOINT']);
     }
 
+    /** @phpstan-ignore missingType.iterableValue */
     public function getConfiguration(array $config, ContainerBuilder $container): Configuration
     {
         return new Configuration();

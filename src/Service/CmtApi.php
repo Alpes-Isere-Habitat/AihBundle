@@ -16,6 +16,7 @@ class CmtApi extends AbstractHapply implements CmtApiInterface
 
     protected string $apiLoginUrl = 'login_check';
 
+    /** @var array<string> */
     protected array $requiredParameters = [
         'aih_aih.cmtapi.user',
         'aih_aih.cmtapi.password',
