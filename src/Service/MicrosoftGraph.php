@@ -26,6 +26,7 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
         ;
     }
 
+    /** @return array<User> */
     public function getAllUsers(): array
     {
         if (!$this->params->has('aih_aih.azure.alluser')) {
@@ -37,6 +38,7 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
         return $this->getAllUsersByGroupId($groupId);
     }
 
+    /** @return array<User> */
     public function getAllUsersByGroupId(string $groupId): array
     {
         $graph = $this->getGraph();
@@ -68,6 +70,7 @@ class MicrosoftGraph extends AbstractHapply implements MicrosoftGraphInterface
         ;
     }
 
+    /** @return array<User> */
     public function getUserMemberOf(string $user): array
     {
         $graph = $this->getGraph();

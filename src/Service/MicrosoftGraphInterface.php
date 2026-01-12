@@ -20,16 +20,22 @@ interface MicrosoftGraphInterface
 
     /**
      * Retourne tous les groupes d'un utilisateur (via son adresse mail).
+     *
+     * @return array<User>
      */
     public function getUserMemberOf(string $user): array;
 
     /**
      * Retourne la liste des utilisateurs d'un groupe (via son id).
+     *
+     * @return array<User>
      */
     public function getAllUsersByGroupId(string $groupId): array;
 
     /**
      * Retourne la liste de tous les utilisateurs Office 365.
+     *
+     * @return array<User>
      */
     public function getAllUsers(): array;
 
