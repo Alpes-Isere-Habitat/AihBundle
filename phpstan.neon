@@ -17,9 +17,6 @@ parameters:
             count: 1
             path: src/AihBundle.php
 
-    checkMissingIterableValueType: false
-    checkGenericClassInNonGenericObjectType: false
-    
 includes:
     - vendor/phpstan/phpstan-strict-rules/rules.neon
     - vendor/phpstan/phpstan-phpunit/extension.neon

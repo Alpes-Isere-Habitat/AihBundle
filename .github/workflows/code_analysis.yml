@@ -6,12 +6,19 @@ jobs:
   static-code-analysis:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.4'
+          tools: composer:v2
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-progress
+
       - name: PHPStan
-        uses: docker://jakzal/phpqa:php8.3
-        with:
-          args: phpstan analyze src
+        run: vendor/bin/phpstan analyze src
+
       - name: PHP-CS-Fixer
-        uses: docker://jakzal/phpqa:php8.3
-        with:
-          args: php-cs-fixer fix --dry-run --using-cache=no
+        run: vendor/bin/php-cs-fixer fix --dry-run --using-cache=no
