@@ -29,11 +29,11 @@
     "require-dev": {
         "ext-json": "*",
         "friendsofphp/php-cs-fixer": "^3.0",
-        "phpstan/phpstan": "^1.0",
-        "phpstan/phpstan-beberlei-assert": "^1.0",
-        "phpstan/phpstan-deprecation-rules": "^1.0",
-        "phpstan/phpstan-phpunit": "^1.0",
-        "phpstan/phpstan-strict-rules": "^1.0",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-beberlei-assert": "^2.0",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0",
         "symfony/framework-bundle": "^6.2 || ^7.0 || ^8.0",
         "symfony/phpunit-bridge": "^6.2 || ^7.0 || ^8.0"
     },
