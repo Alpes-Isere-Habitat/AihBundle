@@ -14,6 +14,11 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         'aih_aih.happlysms.url',
     ];
 
+    /**
+     * @param array<string> $dest
+     *
+     * @return array<string, mixed>
+     */
     public function sendSms(array $dest, string $message): array
     {
         $token = $this->getTokenFromCache(
@@ -42,6 +47,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         return $response->toArray();
     }
 
+    /** @return array<string, mixed> */
     public function getCommunication(int $id): array
     {
         $token = $this->getTokenFromCache(
@@ -65,6 +71,7 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         return $response->toArray();
     }
 
+    /** @return array<string, mixed> */
     public function getCommunications(): array
     {
         $token = $this->getTokenFromCache(
@@ -111,6 +118,11 @@ class HapplySms extends AbstractHapply implements HapplySmsInterface
         return $response->toArray()['data']['smsCount'];
     }
 
+    /**
+     * @param array<int> $ids
+     *
+     * @return array<string, mixed>
+     */
     public function getCommunicationsByIds(array $ids): array
     {
         $token = $this->getTokenFromCache(

@@ -8,6 +8,8 @@ interface HapplyHabInterface
 {
     /**
      * Retourne la liste des habilitations d'un utilisateur.
+     *
+     * @return array<string, mixed>
      */
     public function getRoles(string $email): array;
 }

@@ -15,6 +15,7 @@ class HapplyHab extends AbstractHapply implements HapplyHabInterface
         'aih_aih.happlyhab.application',
     ];
 
+    /** @return array<string, mixed> */
     public function getRoles(string $email): array
     {
         $token = $this->getTokenFromCache(
